@@ -1,0 +1,369 @@
+/* --- 7-Eleven & Staffbase Theme --- */
+:root {
+  --se-orange: #F58220;
+  --se-red: #EE3124;
+  --se-green: #008060;     /* 7-Eleven Green */
+  --se-dark-green: #006b50;
+  --se-black: #2d2d2d;
+  --bg-gray: #f4f6f8;
+  --border-color: #ddd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--bg-gray);
+  color: var(--se-black);
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* --- Layout Containers --- */
+.widget-container {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border-top: 6px solid var(--se-orange); /* The signature orange bar */
+}
+
+/* --- Header Section --- */
+.header {
+  padding: 25px 30px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h2 {
+  margin: 0;
+  color: var(--se-green);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.badge-adhoc {
+  background-color: var(--se-red);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* --- Form Elements --- */
+form { padding: 30px; }
+
+.form-group { margin-bottom: 24px; }
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.sub-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 8px;
+  margin-top: -4px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--se-green);
+  outline: none;
+}
+
+/* --- Custom File Upload Zone --- */
+/* Matches the newsautomation drag/drop look */
+.file-drop-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: 0.2s;
+}
+
+.file-drop-area:hover {
+  border-color: var(--se-orange);
+  background-color: #fffaf5;
+}
+
+.file-msg {
+  color: #666;
+  font-size: 0.9rem;
+  pointer-events: none;
+  width: 100%;
+  text-align: left;
+}
+
+.file-drop-area input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* --- Checkbox --- */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkbox-group input {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  accent-color: var(--se-green);
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+/* --- Main Button --- */
+button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--se-green);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--se-dark-green);
+}
+
+/* --- Status Messages --- */
+#status {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+  display: none; /* Hidden by default */
+}
+#status:not(:empty) { display: block; }
+
+.status-processing { background: #e7f3ff; color: #0056b3; }
+.status-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.status-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* --- Past Submissions (List Items) --- */
+.section-title-area {
+  max-width: 800px;
+  margin: 0 auto 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title-area h3 {
+  color: #555;
+  margin: 0;
+}
+
+/* Filter Controls */
+.filters-container {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+/* The List Item Card */
+#list { max-width: 800px; margin: 0 auto; }
+
+.item {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--se-green); /* Green accent on left */
+  display: flex;
+  flex-direction: column;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.item-detail {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.item-detail code {
+  background: #f1f1f1;
+  padding: 2px 5px;
+  border-radius: 4px;
+  color: #d63384;
+  font-size: 0.85em;
+}
+
+.item-timestamp {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* Action Buttons inside Items */
+.post-link, .btn-delete-post {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.post-link {
+  background: white;
+  border: 1px solid var(--se-green);
+  color: var(--se-green);
+}
+.post-link:hover { background: var(--se-green); color: white; }
+
+.btn-delete-post {
+  background: white;
+  border: 1px solid var(--se-red);
+  color: var(--se-red);
+}
+.btn-delete-post:hover { background: var(--se-red); color: white; }
+
+/* --- Tags --- */
+.status-tag {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.tag-published { background: #d4edda; color: #155724; }
+.tag-draft { background: #fff3cd; color: #856404; }
+.tag-scheduled { background: #cfe2ff; color: #084298; }
+
+/* Modal Styles */
+.modal {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(2px);
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-top: 5px solid var(--se-orange);
+}
+.modal-buttons {
+  display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;
+}
+.btn-confirm { background: var(--se-green); color: white; padding: 10px 20px; border:none; border-radius:4px; cursor:pointer; }
+.btn-cancel { background: #666; color: white; padding: 10px 20px; border:none; border-radius:4px; cursor:pointer; }
+
+/* --- Category Colors --- */
+/* We use CSS variables for easy tweaking */
+:root {
+  --cat-merch: #ffd166; /* Yellow */
+  --cat-mkt:   #F58220; /* 7-Eleven Orange */
+  --cat-audit: #e74c3c; /* Red */
+  --cat-ops:   #118ab2; /* Blue */
+  --cat-hr:    #06d6a0; /* Green */
+  --cat-it:    #073b4c; /* Teal */
+  --cat-none:  #95a5a6; /* Gray */
+}
+
+/* The Legend Bar */
+.legend-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  align-items: center;
+}
+.legend-label { font-weight: bold; color: #555; margin-right: 5px; }
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.color-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+/* Apply colors to the "Left Border" of the list item */
+.item.cat-Merchandising { border-left-color: var(--cat-merch); }
+.item.cat-Marketing     { border-left-color: var(--cat-mkt); }
+.item.cat-Audit         { border-left-color: var(--cat-audit); }
+.item.cat-Operations    { border-left-color: var(--cat-ops); }
+.item.cat-HR            { border-left-color: var(--cat-hr); }
+.item.cat-IT            { border-left-color: var(--cat-it); }
+.item.cat-Uncategorized { border-left-color: var(--cat-none); }
+
+/* Apply colors to the Category Text inside the item */
+.cat-badge { font-weight: 700; }
+.cat-Merchandising { color: var(--cat-merch); }
+.cat-Marketing     { color: var(--cat-mkt); }
+.cat-Audit         { color: var(--cat-audit); }
+.cat-Operations    { color: var(--cat-ops); }
+.cat-HR            { color: var(--cat-hr); }
+.cat-IT            { color: var(--cat-it); }
